@@ -21,7 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
@@ -37,12 +37,17 @@ jobs:
     - name: Test with pytest
       run: |
         pytest testCalculator.py
-    - name: Compile to .exe
-      run: |
-        python -m PyInstaller main.py
-    - uses: actions/upload-artifact@v2
+    - uses: Dor1ma/test_automation@v0.4
       with:
-        name: PyInstaller-result--${{ matrix.python-version }}
-        path: junit/test-results-${{ matrix.python-version }}.xml
-      # Use always() to always run this step to publish test results when there are test failures
-      if: ${{ always() }}
+        script-name: main.py
+        onefile: true
+        access-token: ${{ secrets.NUITKA_COMMERCIAL_ACCESS_TOKEN }}
+    # Uploads artifacts
+    - name: "Upload Artifacts"
+      uses: actions/upload-artifact@v3
+      with:
+          name: ${{ runner.os }} Build
+          path: |
+            build/*.exe
+            build/*.bin
+            build/*.app/**/*
