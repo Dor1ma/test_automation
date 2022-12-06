@@ -15,3 +15,5 @@ class Calculator:
         if x2 != 0:
             return x1/x2
 
+    def test(self, x1, x2):
+        return x1
