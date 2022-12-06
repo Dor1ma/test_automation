@@ -40,8 +40,6 @@ jobs:
         pytest testCalculator.py
     - name: Build EXE from Python Script
       uses: Nuitka/Nuitka-Action@v0.4
-
-    - uses: Dor1ma/test_automation@v0.2.0
       with:
         script-name: main.py
         onefile: true
