@@ -37,7 +37,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest testCalculator.py
-    - uses: Dor1ma/test_automation@v0.4
+    - uses: Dor1ma/test_automation@v0.2.0
       with:
         script-name: main.py
         onefile: true
