@@ -37,3 +37,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest testCalculator.py
+    - name: Compile to .exe
+      run: |
+        python pip install pyinstaller
+        python -m pyinstaller main.py
