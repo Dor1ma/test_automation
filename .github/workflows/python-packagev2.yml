@@ -40,3 +40,7 @@ jobs:
     - name: Compile to .exe
       run: |
         python -m PyInstaller main.py
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ISRPO_LAB_5
+        path: dist/main.exe
