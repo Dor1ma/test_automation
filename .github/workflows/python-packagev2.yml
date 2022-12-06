@@ -27,7 +27,7 @@ jobs:
     - name: Build EXE from Python Script
       uses: Nuitka/Nuitka-Action@v0.4
       with:
-        script-name: main.py
+        script-name: test.py
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
